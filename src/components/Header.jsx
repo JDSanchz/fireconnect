@@ -1,13 +1,16 @@
-import React from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import React from 'react';
+import { useLocation, useNavigate} from 'react-router-dom';
 export default function Header() {
-    const location = useLocation()
-    const navigate = useNavigate()
-    function pathMatchRoute(route){
-        if(route=== location.pathname){
-            return true
+    const location = useLocation();
+    const navigate = useNavigate();
+    function pathMatchRoute(route) {
+        if (route === location.pathname) {
+          return "text-black border-b-orange-400";
+        } else {
+          return "text-gray-500 border-b-transparent";
         }
-    }
+      }
+      
   return (
     <div className='bg-white border-b shadow-sm sticky top-0 z-50'>
         <header className='flex justify-between items-center
@@ -17,12 +20,26 @@ export default function Header() {
             </div>
             <div>
                 <ul className='flex space-x-10'>
-                    <li onClick={()=>navigate("/")} className={`cursor-pointer py-3 text-sm font-semibold text-gray-600 border-b-[3px] border-b-transparent 
-                    ${pathMatchRoute("/") && "text-black border-b-orange-400"}`}>Home</li>
-                    <li onClick={()=>navigate("/offers")} className={`cursor-pointer py-3 text-sm font-semibold text-gray-600 border-b-[3px] border-b-transparent 
-                    ${pathMatchRoute("/offers") && "text-black border-b-orange-400"}`}>Offers</li>
-                    <li onClick={()=>navigate("/sign-in")} className={`cursor-pointer py-3 text-sm font-semibold text-gray-600 border-b-[3px] border-b-transparent 
-                    ${pathMatchRoute("/sign-in") && "text-black border-b-orange-400"}`}>Sign In</li>
+                <li
+  onClick={() => navigate("/")}
+  className={`cursor-pointer py-3 text-sm font-semibold  border-b-[3px] ${pathMatchRoute("/")}`}
+>
+  Home
+</li>
+<li
+  onClick={() => navigate("/offers")}
+  className={`cursor-pointer py-3 text-sm font-semibold  border-b-[3px] ${pathMatchRoute("/offers")}`}
+>
+  Offers
+</li>
+<li
+  onClick={() => navigate("/sign-in")}
+  className={`cursor-pointer py-3 text-sm font-semibold  border-b-[3px] ${pathMatchRoute("/sign-in")}`}
+>
+  Sign In
+</li>
+
+
                 </ul>
             </div>
         </header>
